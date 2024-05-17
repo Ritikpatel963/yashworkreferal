@@ -1,0 +1,115 @@
+body{
+    padding: 0%;
+    margin: 0%;
+    background-color: #0F121A;
+}
+
+
+/* Header Css */
+.navbar .navbar-brand {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+.navbar{
+    background-color: #040814;
+}
+
+
+/* Footer Css */
+.footer {
+    background-color: #040814; /* Dark blue background color */
+    color: white; /* Light blue icon color */
+    padding: 10px 0;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    box-shadow: 0 -4px 6px -1px rgba(0, 0, 0, 0.1), 0 -2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+.footer a {
+    color: #F6265A ; 
+    text-decoration: none;
+}
+.footer a:hover {
+    color: #ffffff; 
+}
+.footer .icon {
+    font-size: 24px; 
+}
+.footer .text {
+    font-size: 14px; 
+}
+.fa-house, .fa-book, .fa-user {
+    color: #F6265A;
+}
+.fa-house , .fa-book, .fa-user:hover{
+    color: white;
+}
+
+/* Marquee css */
+.marquee-container {
+    width: 100%;
+    height: 130px; /* Adjust height as needed */
+    overflow: hidden;
+    position: relative;
+}
+.marquee-content {
+    display: block;
+    position: absolute;
+    width: 100%;
+    bottom: 100%;
+    animation: scrollUp 10s linear infinite;
+    padding-left: 50px;
+}
+.marquee-content p{
+    color:white;
+}
+@keyframes scrollUp {
+    0% {
+        bottom: -100%;
+    }
+    100% {
+        bottom: 100%;
+    }
+}
+/* First Section Css */
+.card-custom {
+    background-color: #F6265A ; /* Base color for balance card */
+    color: #ffffff; /* Text color */
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+.card-referral {
+    background-color: #F6265A ; /* Light blue for referral card */
+    color: #ffffff; /* Text color */
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+.card-telegram {
+    background-color: #F6265A ; /* Darker blue for telegram card */
+    color: #ffffff; /* Text color */
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+.icon {
+    font-size: 24px;
+    margin-right: 10px;
+    color: white;
+}
+.card-custom, .card-referral, .card-telegram {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.text-small {
+    font-size: 12px;
+}
+
+@media only screen and (max-width: 600px) {
+    .marquee-container{
+     height: 38px;
+    }
+  }
