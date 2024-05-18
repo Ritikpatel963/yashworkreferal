@@ -97,7 +97,7 @@ include 'header.php';
 <!-- Featured Section Started -->
 <div class="container mt-4">
         <div class="row">
-            <div class="col-md-4 mb-4 featured-card">
+            <div class="col-6 col-md-4 mb-4 featured-card">
                 <div class="card">
                     <img src="assets/image/56.jpg" class="card-img-top" alt="Power Project A">
                     <div class="card-body">
@@ -109,7 +109,7 @@ include 'header.php';
                     </div>
                 </div>
             </div>
-            <div class="col-md-4 mb-4 featured-card">
+            <div class="col-6 col-md-4 mb-4 featured-card">
                 <div class="card">
                     <img src="assets/image/56.jpg" class="card-img-top" alt="Power Project B">
                     <div class="card-body">
@@ -121,7 +121,7 @@ include 'header.php';
                     </div>
                 </div>
             </div>
-            <div class="col-md-4 mb-4 featured-card">
+            <div class="col-6 col-md-4 mb-4 featured-card">
                 <div class="card">
                     <img src="assets/image/56.jpg" class="card-img-top" alt="Power Project B">
                     <div class="card-body">
@@ -134,45 +134,7 @@ include 'header.php';
                 </div>
             </div>
         </div>
-        <div class="row">
-            <div class="col-md-4 mb-4 featured-card">
-                <div class="card">
-                    <img src="assets/image/56.jpg" class="card-img-top" alt="Power Project A">
-                    <div class="card-body">
-                        <h5 class="card-title">Power Project A</h5>
-                        <p class="card-text"><strong>Daily Income:</strong> ₹105</p>
-                        <p class="card-text"><strong>Total Income:</strong> ₹9450</p>
-                        <p class="card-text"><strong>Serving Time:</strong> 90 Days</p>
-                        <a href="#" class="btn btn-primary">₹480</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 mb-4 featured-card">
-                <div class="card">
-                    <img src="assets/image/56.jpg" class="card-img-top" alt="Power Project B">
-                    <div class="card-body">
-                        <h5 class="card-title">Power Project B</h5>
-                        <p class="card-text"><strong>Daily Income:</strong> ₹420</p>
-                        <p class="card-text"><strong>Total Income:</strong> ₹37800</p>
-                        <p class="card-text"><strong>Serving Time:</strong> 90 Days</p>
-                        <a href="#" class="btn btn-primary">₹1960</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 mb-4 featured-card">
-                <div class="card">
-                    <img src="assets/image/56.jpg" class="card-img-top" alt="Power Project B">
-                    <div class="card-body">
-                        <h5 class="card-title">Power Project B</h5>
-                        <p class="card-text"><strong>Daily Income:</strong> ₹420</p>
-                        <p class="card-text"><strong>Total Income:</strong> ₹37800</p>
-                        <p class="card-text"><strong>Serving Time:</strong> 90 Days</p>
-                        <a href="#" class="btn btn-primary">₹1960</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+</div>
 <?php
 include 'footer.php';
 ?>
