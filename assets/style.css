@@ -144,7 +144,7 @@ body{
     margin-bottom: 15px;
 }
 .card-telegram {
-    background-color: #F6265A ; 
+    background-color: #F6265A; 
     color: #ffffff; 
     padding: 20px;
     border-radius: 8px;
@@ -164,11 +164,97 @@ body{
     font-size: 12px;
 }
 
+
+/* Feature Section  */
+.featured-section {
+    color: #fff;
+    padding: 20px;
+    text-align: left;
+}
+
+.content {
+    margin: 0 auto;
+}
+
+.content h1 {
+    font-size: 24px;
+    margin-bottom: 10px;
+    position: relative;
+}
+
+.content h1::before {
+    content: '';
+    position: absolute;
+    left: -10px;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 100%;
+    width: 5px;
+    background-color: #00a8cc;
+}
+
+.content p {
+    font-size: 16px;
+    margin: 0;
+}
+
+.product-card{
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.card {
+    background-color: #0B0708;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 500px;
+    padding: 20px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.card img {
+    width: 100%;
+    border-radius: 10px 10px 0 0;
+}
+
+.card h2 {
+    margin: 20px 0;
+    font-size: 1.5em;
+    color: white;
+}
+
+.card p {
+    margin: 10px 0;
+    font-size: 1em;
+    color: white;
+}
+
+.card button {
+    background-color: #F6265A;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 1em;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+.card button:hover {
+    background-color: #e7073f;
+}
+
+.featured-card{
+    display: flex;
+}
 @media only screen and (max-width: 600px) {
     .marquee-container{
      height: 28px;
     }
-    .footer{
-        position: fixed;
-    }
+    
   }
