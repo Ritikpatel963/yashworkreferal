@@ -1,22 +1,44 @@
+
+
 <footer class="footer">
-    <div class="container">
+<div class="upperfooter">
+    <div class="upperfooter-content">
+        <div class="upperfooter-logo">
+            <img src="assets/image/logo.png" alt="Company Logo">
+        </div>
+        <div class="upperfooter-text">
+            <p>DS-1, 465, Sec. 10, Ukraine</p>
+            <p>2007 © Indus Power All Rights Reserved</p>
+        </div>
+        <div class="upperfooter-links">
+            <a href="#">Terms of Service</a> | 
+            <a href="#">Privacy Policy</a> | 
+            <a href="#">Risk Disclosure Agreement</a>
+        </div>
+    </div>
+</div>
+
+    <div class="container mt-3">
         <div class="row text-center">
-            <div class="col">
+            <div class="col text">
                 <a href="#">
                     <div class="icon"><i class="fa-solid fa-house" ></i></div>
-                    <div class="text">Home</div>
+                    <p style="font-size: 14px;">Home</p>
                 </a>
             </div>
-            <div class="col">
+            <div class="col text">
                 <a href="#">
-                    <div class="icon"><i class="fa-solid fa-book" ></i></div>
-                    <div class="text">Orders</div>
+                <div class="icon">
+                    <i class="fa-solid fa-book" ></i>
+                    <p style="font-size: 14px;">Orders</p>
+                </div>
+                 
                 </a>
             </div>
-            <div class="col">
+            <div class="col text">
                 <a href="#">
                     <div class="icon"><i class="fa-solid fa-user" ></i></div>
-                    <div class="text">Me</div>
+                    <p style="font-size: 14px;">Me</p>
                 </a>
             </div>
         </div>
