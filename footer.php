@@ -20,13 +20,13 @@
         <div class="row text-center downfooter">
             <div class="row text-center">
                 <div class="col text">
-                    <a href="#">
+                    <a href="index.php">
                         <div class="icon"><i class="fa-solid fa-house"></i></div>
                         <p style="font-size: 14px;">Home</p>
                     </a>
                 </div>
                 <div class="col text">
-                    <a href="#">
+                    <a href="order.php">
                         <div class="icon">
                             <i class="fa-solid fa-book"></i>
                             <p style="font-size: 14px;">Orders</p>
@@ -35,7 +35,7 @@
                     </a>
                 </div>
                 <div class="col text">
-                    <a href="#">
+                    <a href="me.php">
                         <div class="icon"><i class="fa-solid fa-user"></i></div>
                         <p style="font-size: 14px;">Me</p>
                     </a>

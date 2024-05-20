@@ -180,7 +180,6 @@ body {
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     width: 500px;
-    padding: 20px;
     text-align: center;
     display: flex;
     flex-direction: column;
@@ -230,10 +229,30 @@ body {
 .featured-card {
     display: flex;
 }
+.orders-section {
+    background: linear-gradient(180deg, rgba(4, 8, 20, 1) 0%, rgba(15, 37, 104, 1) 100%);
+    padding: 20px 0;
+    border-bottom: 2px solid #0800ff;
+    border-radius: 0 0 12px 12px;
+}
 
 /* Media Queries */
 @media only screen and (max-width: 600px) {
     .marquee-container {
         height: 28px;
+    }
+
+    .card h2,
+.card-title {
+        font-size: 1.0em;
+    }
+    .card p{
+        font-size: 0.8em;
+    }
+    .stat-title{
+        font-size: 0.8rem;
+    }
+    .stat-value{
+        font-size: 0.8rem;
     }
 }
