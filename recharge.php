@@ -28,11 +28,10 @@
         </div>
         <div class="deposit-container">
             <div class="deposit-header">
-            <i class="fas fa-rupee-sign"></i>
                 <h5>Please Enter Amount</h5>
             </div>
             <div class="deposit-input">
-                <input type="number" min="400" placeholder="Enter amount">
+                <input type="text" min="400" placeholder="Enter amount">
             </div>
             <button class="deposit-button">Deposit Now</button>
             <div class="disclaimer">

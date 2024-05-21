@@ -95,7 +95,7 @@ include 'header.php';
 </section>
 
 <!-- Featured Section Started -->
-<div class="container mt-4">
+<div class="container mt-4" style="padding-bottom: 100px;">
     <div class="row">
         <div class="col-6 col-md-4 mb-4 featured-card">
             <div class="card">
@@ -135,6 +135,7 @@ include 'header.php';
         </div>
     </div>
 </div>
+
 <?php
 include 'footer.php';
 ?>
