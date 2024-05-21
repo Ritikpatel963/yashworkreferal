@@ -1,20 +1,8 @@
+<style>
+    
+
+</style>
 <footer class="footer">
-    <div class="upperfooter">
-        <div class="upperfooter-content">
-            <div class="upperfooter-logo">
-                <img src="assets/image/logo.png" alt="Company Logo">
-            </div>
-            <div class="upperfooter-text">
-                <p>DS-1, 465, Sec. 10, Ukraine</p>
-                <p>2007 © Indus Power All Rights Reserved</p>
-            </div>
-            <div class="upperfooter-links">
-                <a href="#">Terms of Service</a> |
-                <a href="#">Privacy Policy</a> |
-                <a href="#">Risk Disclosure Agreement</a>
-            </div>
-        </div>
-    </div>
 
     <div class="container mt-3">
         <div class="row text-center downfooter">

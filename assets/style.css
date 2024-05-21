@@ -18,10 +18,6 @@ body {
     width: 100%;
 }
 
-.footer {
-    background-color: #000;
-    box-shadow: 0 -4px 6px -1px rgba(0, 0, 0, 0.1), 0 -2px 4px -1px rgba(0, 0, 0, 0.06);
-}
 
 .footer a {
     color: #F6265A;
@@ -45,7 +41,7 @@ body {
 .footer .fa-house,
 .footer .fa-book,
 .footer .fa-user {
-    color: #F6265A;
+    color: #4839bb;
 }
 
 .footer .fa-house:hover,
@@ -76,6 +72,39 @@ body {
 .upperfooter-links a {
     color: white;
     margin: 0 5px;
+}
+.footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 60px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    color: #ff005c;
+    background-color: #000;
+    box-shadow: 0 -4px 6px -1px rgba(0, 0, 0, 0.1), 0 -2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.footer-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.footer-item .icon {
+    font-size: 24px; /* Adjust icon size as needed */
+}
+
+.footer-item span {
+    margin-top: 4px;
+    font-size: 12px; /* Adjust text size as needed */
+}
+
+.content {
+    flex: 1;
+    padding-bottom: 60px; /* Space for the footer */
 }
 
 /* Marquee */
@@ -115,8 +144,8 @@ body {
 .card-custom,
 .card-referral,
 .card-telegram {
-    background-color: #F6265A;
-    color: white;
+    background: linear-gradient(169deg, rgba(94,175,222,1) 0%, rgba(126,73,204,1) 100%); 
+        color: white;
     padding: 20px;
     border-radius: 8px;
     margin-bottom: 15px;
@@ -176,7 +205,7 @@ body {
 }
 
 .card {
-    background-color: #272E36;
+    background-color: #181530;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     width: 500px;
@@ -220,8 +249,8 @@ body {
 }
 
 .card-body .btn-primary {
-    background: radial-gradient(circle, rgba(18, 178, 150, 1) 0%, rgba(8, 133, 129, 1) 100%);
-    width: 70%;
+    background: linear-gradient(169deg, rgba(94,175,222,1) 0%, rgba(126,73,204,1) 100%); 
+        width: 70%;
     color: black;
     border: none;
 }
@@ -230,13 +259,177 @@ body {
     display: flex;
 }
 .orders-section {
-    background: linear-gradient(180deg, rgba(4, 8, 20, 1) 0%, rgba(15, 37, 104, 1) 100%);
-    padding: 20px 0;
+    background: linear-gradient(169deg, rgba(94,175,222,1) 0%, rgba(126,73,204,1) 100%);     padding: 20px 0;
     border-bottom: 2px solid #0800ff;
     border-radius: 0 0 12px 12px;
 }
 
-/* Media Queries */
+
+/* submit button */
+.submit{
+    background: linear-gradient(169deg, rgba(94,175,222,1) 0%, rgba(126,73,204,1) 100%); 
+    width: 100% !important;
+}
+/* all page header */
+.container-fluid.orders-section {
+    background: linear-gradient(to right, #6a11cb, #2575fc);
+    padding: 15px 0;
+    color: white;
+}
+/* personal information */
+.info-container {
+    max-width: 1000px;
+        margin: 50px auto;
+    background-color: #123878;
+    color: white;
+    padding: 20px;
+    border-radius: 5px;
+  }
+  .info-container .info-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid #1c4c9b;
+  }
+  .info-container .info-item:last-child {
+    border-bottom: none;
+  }
+  .info-container .info-item i {
+    margin-right: 10px;
+  }
+  .info-container .change-password {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+  }
+  .info-container .change-password:hover {
+    text-decoration: underline;
+  }
+  /* recharge section */
+  .balance-container {
+    text-align: center;
+    margin: 20px 0;
+    color: white;
+  }
+  .balance-amount {
+    font-size: 2rem;
+  }
+  .info-box {
+    background-color: #3b4a61;
+    padding: 15px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+  }
+  .deposit-container {
+    background-color: #123878;
+    padding: 20px;
+    border-radius: 5px;
+  }
+  .deposit-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    color: white;
+  }
+  .deposit-header i {
+    font-size: 1.5rem;
+    margin-right: 10px;
+  }
+  .deposit-input {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  .deposit-input input {
+    width: 100%;
+    padding: 10px;
+    background-color: #1a4b8a;
+    border: none;
+    border-radius: 5px;
+    color: white;
+  }
+  .deposit-input input:focus {
+    outline: none;
+  }
+  .deposit-button {
+    background-color: #0d94ff;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  .deposit-button:hover {
+    background-color: #0b82df;
+  }
+  .disclaimer {
+    font-size: 0.85rem;
+    color: #c0c0c0;
+    text-align: center;
+  }
+  .deposit-button{
+    width: 100%;
+    background-color: #4839bb !important;
+  }
+  .info-box{
+    color: #D6B832;
+  background: #293C3B;
+  border: 1px solid #787E2F;
+  }
+
+  /* Team */
+ 
+.withdraw-section {
+    text-align: center;
+    margin: 20px 0;
+    border: 1px solid #82008D;
+  padding: 20px;
+  background-color: #6049A080;
+}
+.withdraw-section button {
+    background-color: #0d6efd;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+}
+.info-boxs{
+    background: rgba(130, 141, 0, 0.5);
+    color: #FFE227;
+    border: 1px solid #828D00;
+    padding: 10px;
+}
+.custom-table {
+    background-color: #4839bb; /* Dark blue background */
+    color: #fff; /* White text */
+  }
+  .custom-table th {
+    background-color: #4839bb; /* Lighter blue for header */
+    color: #fff;
+  }
+  .custom-table td, .custom-table th {
+    border-color: #004080; /* Dark blue borders */
+  }
+  .custom-table tbody td {
+    color: yellow; /* Yellow text for body cells */
+  }
+  .withdraw-section button{
+    width: 100%;
+    background-color: #4839bb !important;
+  }
+  .withdraw-section p{
+      color: white;  
+      font-size: 12px;
+    }
+    .withdraw-section .fa-shield{
+            color: white;
+            font-size: 30px;
+    }
+    /* Media Queries */
 @media only screen and (max-width: 600px) {
     .marquee-container {
         height: 28px;
@@ -255,4 +448,18 @@ body {
     .stat-value{
         font-size: 0.8rem;
     }
+.footer{
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 60px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    box-shadow: 0 -2px 5px rgba(0,0,0,0.1);
+}
+.info-container{
+    width: 400px;
+}
 }

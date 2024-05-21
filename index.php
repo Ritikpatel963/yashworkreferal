@@ -5,13 +5,13 @@ include 'header.php';
 <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
     <div class="carousel-inner">
         <div class="carousel-item active">
-            <img src="assets/image/banner-1.png" class="d-block w-100" alt="Slide 1">
+            <img src="assets/image/baanner1.jpeg" class="d-block w-100" alt="Slide 1">
         </div>
         <div class="carousel-item">
-            <img src="assets/image/banner-1.png" class="d-block w-100" alt="Slide 2">
+            <img src="assets/image/baanner2.jpeg" class="d-block w-100" alt="Slide 2">
         </div>
         <div class="carousel-item">
-            <img src="assets/image/banner-1.png" class="d-block w-100" alt="Slide 3">
+            <img src="assets/image/baanner3.jpeg" class="d-block w-100" alt="Slide 3">
         </div>
     </div>
     <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">

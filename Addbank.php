@@ -21,15 +21,47 @@
 
         .heading h2 {
             text-align: center;
-            font-size: 1.5rem;
+            font-size: 1rem;
 
         }
 
-        .orders-section {
-            background: linear-gradient(180deg, rgba(4, 8, 20, 1) 0%, rgba(15, 37, 104, 1) 100%);
-            padding: 20px 0;
-            border-bottom: 2px solid #0800ff;
-            border-radius: 0 0 12px 12px;
+        
+        .heading {
+            margin-top: 20px;
+            color: #ffffff;
+        }
+
+        .bank-details form {
+            max-width: 700px;
+            margin: auto;
+        }
+
+        .form-control {
+            margin-bottom: 15px;
+        }
+
+        .mb-3 {
+            margin-bottom: 2.5rem !important;
+        }
+
+        .caution-box {
+            display: flex;
+            align-items: center;
+            color: #fff;
+            padding: 10px;
+            border-radius: 5px;
+            margin: 20px 0;
+            background: #293C3B;
+            border: 1px solid #787E2F;
+        }
+
+        .caution-box .icon {
+            margin-right: 10px;
+            font-size: 1.5em;
+        }
+
+        .fas {
+            color: #ffcb00 !important;
         }
     </style>
 </head>
@@ -38,26 +70,34 @@
     <div class="container-fluid orders-section text-center">
         <h4>My bank Info</h4>
     </div>
-    <div class="heading mt-5">
-        <h2>Please enter your bank details below to withdraw your balance to your bank account.</h2>
+    <div class="container">
+        <div class="heading mt-5">
+            <h2>Please enter your bank details below to withdraw your balance to your bank account.</h2>
+        </div>
     </div>
-    <div class="container text-center">
+    <div class="container text-center mt-5">
         <div class="bank-details">
             <form>
                 <div class="mb-3">
-                    <input type="text" class="form-control" id="exampleInputEmail1"  placeholder="Enter your full name">
+                    <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Enter your full name">
                 </div>
                 <div class="mb-3">
-                <input type="number" class="form-control" id="exampleInputEmail1" placeholder="Enter your bank card numbers">
+                    <input type="number" class="form-control" id="exampleInputEmail1" placeholder="Enter your bank card numbers">
                 </div>
                 <div class="mb-3">
-                <input type="number" class="form-control" id="exampleInputEmail1"  placeholder="Enter your IFSC codes">
+                    <input type="number" class="form-control" id="exampleInputEmail1" placeholder="Enter your IFSC codes">
                 </div>
                 <div class="mb-3">
-                <input type="phone" class="form-control" id="exampleInputEmail1"  placeholder="Phone Number">
+                    <input type="phone" class="form-control" id="exampleInputEmail1" placeholder="Phone Number">
                 </div>
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="submit" class="btn btn-primary submit">Submit</button>
             </form>
+        </div>
+    </div>
+    <div class="container">
+        <div class="caution-box">
+            <i class="fas fa-exclamation-triangle icon"></i>
+            <span>Please type the information of bank account accurately. We will not be responsible for capital loss caused by information </span>
         </div>
     </div>
 

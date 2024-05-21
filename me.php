@@ -15,7 +15,8 @@
             padding: 0;
             font-family: Arial, sans-serif;
             color: white;
-            overflow-x: hidden; /* Prevent horizontal overflow */
+            overflow-x: hidden;
+            /* Prevent horizontal overflow */
         }
 
         .orders-section {
@@ -76,15 +77,21 @@
             font-size: 1.5rem;
             width: 24px;
             height: 24px;
+            color: #4839bb;
         }
 
         .menu-item-text {
             flex-grow: 1;
             margin-left: 15px;
+            color: white;
         }
 
         .menu-section {
             margin: 20px auto;
+        }
+
+        a {
+            text-decoration: none;
         }
 
         @media only screen and (max-width: 600px) {
@@ -97,7 +104,8 @@
             }
 
             .divider {
-                height: 60%; /* Adjust the height for smaller screens if needed */
+                height: 60%;
+                /* Adjust the height for smaller screens if needed */
             }
         }
     </style>
@@ -139,61 +147,69 @@
 
     <!-- Main Section -->
     <div class="container menu-section">
-        <div class="menu-item">
-            <i class="fas fa-university menu-item-icon"></i>
-            <span class="menu-item-text">Bank Account</span>
-            <i class="fas fa-chevron-right"></i>
-        </div>
+        <a href="addbank.php">
+            <div class="menu-item">
+                <i class="fas fa-university menu-item-icon"></i>
+                <span class="menu-item-text">Bank Account</span>
+        </a>
+        <i class="fas fa-chevron-right"></i>
+    </div>
+    <a href="personal-information.php">
         <div class="menu-item">
             <i class="fas fa-cog menu-item-icon"></i>
             <span class="menu-item-text">Settings</span>
-            <i class="fas fa-chevron-right"></i>
-        </div>
-        <div class="menu-item">
-            <i class="fas fa-bolt menu-item-icon"></i>
-            <span class="menu-item-text">Recharge</span>
-            <i class="fas fa-chevron-right"></i>
-        </div>
-        <div class="menu-item">
-            <i class="fas fa-wallet menu-item-icon"></i>
-            <span class="menu-item-text">Withdraw</span>
-            <i class="fas fa-chevron-right"></i>
-        </div>
-        <div class="menu-item">
-            <i class="fas fa-users menu-item-icon"></i>
-            <span class="menu-item-text">Team</span>
-            <i class="fas fa-chevron-right"></i>
-        </div>
-        <div class="menu-item">
-            <i class="fas fa-file-alt menu-item-icon"></i>
-            <span class="menu-item-text">Account Record</span>
-            <i class="fas fa-chevron-right"></i>
-        </div>
-        <div class="menu-item">
-            <i class="fas fa-receipt menu-item-icon"></i>
-            <span class="menu-item-text">Recharge Record</span>
-            <i class="fas fa-chevron-right"></i>
-        </div>
-        <div class="menu-item">
-            <i class="fas fa-file-invoice-dollar menu-item-icon"></i>
-            <span class="menu-item-text">Withdrawal Record</span>
-            <i class="fas fa-chevron-right"></i>
-        </div>
-        <div class="menu-item">
-            <i class="fas fa-info-circle menu-item-icon"></i>
-            <span class="menu-item-text">About Us</span>
-            <i class="fas fa-chevron-right"></i>
-        </div>
-        <div class="menu-item">
-            <i class="fab fa-telegram-plane menu-item-icon"></i>
-            <span class="menu-item-text">Telegram Channel</span>
-            <i class="fas fa-chevron-right"></i>
-        </div>
-        <div class="menu-item">
+    </a>
+    <i class="fas fa-chevron-right"></i>
+    </div>
+    <a href="recharge.php">
+    <div class="menu-item">
+        <i class="fas fa-bolt menu-item-icon"></i>
+        <span class="menu-item-text">Recharge</span>
+        </a>
+        <i class="fas fa-chevron-right"></i>
+    </div>
+    <div class="menu-item">
+        <i class="fas fa-wallet menu-item-icon"></i>
+        <span class="menu-item-text">Withdraw</span>
+        <i class="fas fa-chevron-right"></i>
+    </div>
+    <a href="team.php">
+    <div class="menu-item">
+        <i class="fas fa-users menu-item-icon"></i>
+        <span class="menu-item-text">Team</span>
+        </a>
+        <i class="fas fa-chevron-right"></i>
+    </div>
+    <div class="menu-item">
+        <i class="fas fa-file-alt menu-item-icon"></i>
+        <span class="menu-item-text">Account Record</span>
+        <i class="fas fa-chevron-right"></i>
+    </div>
+    <div class="menu-item">
+        <i class="fas fa-receipt menu-item-icon"></i>
+        <span class="menu-item-text">Recharge Record</span>
+        <i class="fas fa-chevron-right"></i>
+    </div>
+    <div class="menu-item">
+        <i class="fas fa-file-invoice-dollar menu-item-icon"></i>
+        <span class="menu-item-text">Withdrawal Record</span>
+        <i class="fas fa-chevron-right"></i>
+    </div>
+    <div class="menu-item">
+        <i class="fas fa-info-circle menu-item-icon"></i>
+        <span class="menu-item-text">About Us</span>
+        <i class="fas fa-chevron-right"></i>
+    </div>
+    <div class="menu-item">
+        <i class="fab fa-telegram-plane menu-item-icon"></i>
+        <span class="menu-item-text">Telegram Channel</span>
+        <i class="fas fa-chevron-right"></i>
+    </div>
+    <div class="menu-item">
         <i class="fa-solid fa-right-from-bracket  menu-item-icon"></i>
-            <span class="menu-item-text">Logout</span>
-            <i class="fas fa-chevron-right"></i>
-        </div>
+        <span class="menu-item-text">Logout</span>
+        <i class="fas fa-chevron-right"></i>
+    </div>
     </div>
     <?php include 'footer.php'; ?>
 </body>
