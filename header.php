@@ -1,4 +1,10 @@
-<!DOCTYPE html>
+<?php
+include 'inc/db.php';
+if (!isset($_SESSION['user'])) {
+    header("location: login.php");
+}
+?>
+
 <html lang="en">
 
 <head>
