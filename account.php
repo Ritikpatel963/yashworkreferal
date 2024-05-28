@@ -7,7 +7,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="assets/style.css">
-    <title>Me</title>
+    <title>Account</title>
     <style>
         body {
             background-color: #101119;
@@ -147,7 +147,7 @@
 
     <!-- Main Section -->
     <div class="container menu-section">
-        <a href="addbank.php">
+        <a href="add-bank.php">
             <div class="menu-item">
                 <i class="fas fa-university menu-item-icon"></i>
                 <span class="menu-item-text">Bank Account</span>
@@ -168,9 +168,11 @@
         </a>
         <i class="fas fa-chevron-right"></i>
     </div>
+    <a href="withdraw.php">
     <div class="menu-item">
         <i class="fas fa-wallet menu-item-icon"></i>
         <span class="menu-item-text">Withdraw</span>
+        </a>
         <i class="fas fa-chevron-right"></i>
     </div>
     <a href="team.php">
@@ -180,19 +182,25 @@
         </a>
         <i class="fas fa-chevron-right"></i>
     </div>
+    <a href="payment-record.php">
     <div class="menu-item">
         <i class="fas fa-file-alt menu-item-icon"></i>
         <span class="menu-item-text">Account Record</span>
+        </a>
         <i class="fas fa-chevron-right"></i>
     </div>
+    <a href="recharge-records.php">
     <div class="menu-item">
         <i class="fas fa-receipt menu-item-icon"></i>
         <span class="menu-item-text">Recharge Record</span>
+        </a>
         <i class="fas fa-chevron-right"></i>
     </div>
+    <a href="withdrawal-records.php">
     <div class="menu-item">
         <i class="fas fa-file-invoice-dollar menu-item-icon"></i>
-        <span class="menu-item-text">Withdrawal Record</span>
+        <span class="menu-item-text">Withdrawal Record</span>      
+    </a>
         <i class="fas fa-chevron-right"></i>
     </div>
     <div class="menu-item">
@@ -212,6 +220,3 @@
     </div>
     </div>
     <?php include 'footer.php'; ?>
-</body>
-
-</html>

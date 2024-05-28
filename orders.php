@@ -47,8 +47,7 @@
 
     /* order section */
     .order-card {
-        background: linear-gradient(180deg, rgba(245, 38, 89, 1) 0%, rgba(226, 30, 82, 1) 100%);
-        border: 1px solid #cd3575;
+        background: linear-gradient(to right, #6a11cb, #2575fc);
         border-radius: 10px;
         padding: 15px;
         color: white;
