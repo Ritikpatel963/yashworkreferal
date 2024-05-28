@@ -1,4 +1,50 @@
-<!DOCTYPE html>
+<?php
+include 'inc/db.php';
+
+if (isset($_SESSION['user'])) {
+    header("Location: index.php");
+}
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $phone = $_POST['phone_number'];
+    $password = $_POST['password'];
+
+    // Validate inputs
+    if (empty($phone) || empty($password)) {
+        $error = "<p class='text-danger'>Phone number and password are required.</p>";
+    }
+
+    if (!isset($error)) {
+        // Hash the password with MD5 (Not recommended for production use)
+        $hashed_password = md5($password);
+
+        // Query the database for the user
+        $stmt = $conn->prepare("SELECT * FROM users WHERE phone = ? AND password = ?");
+        $stmt->bind_param("ss", $phone, $hashed_password);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        if ($result->num_rows > 0) {
+            // User found
+            $user = $result->fetch_assoc();
+            $_SESSION['user'] = $user['id'];
+            $_SESSION['user_no'] = $user['phone'];
+            $_SESSION['user_refer'] = $user['refer_code'];
+            $_SESSION['user_referrer'] = $user['referrer_code'];
+
+            // Redirect to a secure page or dashboard
+            header("Location: index.php");
+            exit();
+        } else {
+            // User not found
+            $error = "Invalid phone number or password.";
+        }
+    }
+
+    $stmt->close();
+}
+?>
+
 <html lang="en">
 
 <head>
@@ -13,47 +59,50 @@
             background: linear-gradient(to right, rgb(207, 25, 223), rgb(73, 22, 134));
         }
 
-.phone-input {
-    display: flex;
-  justify-content: center;
-  align-content: center;
-  align-items: center;
-}
+        .phone-input {
+            display: flex;
+            justify-content: center;
+            align-content: center;
+            align-items: center;
+        }
 
-.country-code {
-    display: flex;
-    align-items: center;
-    padding: 11px;
-}
+        .country-code {
+            display: flex;
+            align-items: center;
+            padding: 11px;
+        }
 
-#country-code{
-    background-color: white;
-}
-.country-code select {
-    padding: 10px;
-    font-size: 16px;
-    border: 1px solid #ccc;
-    border-radius: 5px 0 0 5px;
-    appearance: none; /* Remove default dropdown arrow */
-    background: transparent;
-    background-repeat: no-repeat;
-    background-position: right 10px center;
-    background-size: 16px;
-}
+        #country-code {
+            background-color: white;
+        }
 
-#phone-number {
-    padding: 10px;
-    font-size: 16px;
-    border: 1px solid #ccc;
-    border-radius: 0 5px 5px 0;
-    border-left: none;
-    flex: 1;
-    width: 100%;
-  padding: 10px;
-}
-.form-control-lg{
-    font-size: 1.1em
-}
+        .country-code select {
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px 0 0 5px;
+            appearance: none;
+            /* Remove default dropdown arrow */
+            background: transparent;
+            background-repeat: no-repeat;
+            background-position: right 10px center;
+            background-size: 16px;
+        }
+
+        #phone-number {
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 0 5px 5px 0;
+            border-left: none;
+            flex: 1;
+            width: 100%;
+            padding: 10px;
+        }
+
+        .form-control-lg {
+            font-size: 1.1em
+        }
     </style>
 </head>
 
@@ -64,29 +113,31 @@
                 <div class="col-12 col-md-8 col-lg-6 col-xl-5">
                     <div class="card bg-dark text-white" style="border-radius: 1rem;">
                         <div class="card-body p-5 text-center">
-                            <div class="mb-md-5 mt-md-4 pb-3">
-                                <h2 class="fw-bold mb-2 text-uppercase">Login</h2>
-                                <p class="text-white-50 mb-5">Please enter your login and password!</p>
-                                <div data-mdb-input-init class="form-outline form-white mb-4">
-                                    <div class="phone-input">
-                                        <div class="country-code">
-                                            <select id="country-code" name="country-code">
-                                                <option value="+1" data-flag="🇺🇸">🇺🇸 +1</option>
-                                                <option value="+44" data-flag="🇬🇧">🇬🇧 +44</option>
-                                                <option value="+91" data-flag="🇮🇳">🇮🇳 +91</option>
-                                                <!-- Add more options as needed -->
-                                            </select>
+                            <form method="POST" action="">
+                                <div class="mb-md-5 mt-md-4 pb-3">
+                                    <h2 class="fw-bold mb-2 text-uppercase">Login</h2>
+                                    <p class="text-white-50 mb-5">Please enter your login and password!</p>
+
+                                    <?php
+                                    if (isset($error)) {
+                                    ?>
+                                        <div class="alert alert-danger"><?= $error ?></div>
+                                    <?php
+                                    }
+                                    ?>
+
+                                    <div class="form-outline form-white mb-4">
+                                        <div class="phone-input">
+                                            <input type="tel" id="phone-number" name="phone_number" placeholder="Phone Number" required>
                                         </div>
-                                        <input type="tel" id="phone-number" name="phone-number" placeholder="Phone Number">
                                     </div>
+                                    <div class="form-outline form-white mb-4">
+                                        <input type="password" id="typePasswordX" name="password" placeholder="Password" class="form-control form-control-lg" required />
+                                    </div>
+                                    <button class="btn btn-outline-light btn-lg px-5" type="submit">Login</button>
                                 </div>
-                                <div data-mdb-input-init class="form-outline form-white mb-4">
-                                    <input type="password" id="typePasswordX" placeholder="Password" class="form-control form-control-lg" />
-                                </div>
-                                <p class="small mb-5 pb-lg-2"><a class="text-white-50" href="#!">Forgot password?</a></p>
-                                <button data-mdb-button-init data-mdb-ripple-init class="btn btn-outline-light btn-lg px-5" type="submit">Submit</button>
-                            </div>
-                            <p class="mb-0">Does not have a account <a href="register.php" class="text-white-50 fw-bold">Signup</a></p>
+                                <p class="mb-0">Don't have an account? <a href="register.php" class="text-white-50 fw-bold">Signup</a></p>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -94,19 +145,6 @@
         </div>
     </section>
 
-
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const countryCodeSelect = document.getElementById('country-code');
-            const phoneNumberInput = document.getElementById('phone-number');
-
-            countryCodeSelect.addEventListener('change', () => {
-                const selectedOption = countryCodeSelect.options[countryCodeSelect.selectedIndex];
-                const flag = selectedOption.getAttribute('data-flag');
-                console.log(`Selected country code: ${selectedOption.value}, Flag: ${flag}`);
-            });
-        });
-    </script>
 </body>
 
 </html>

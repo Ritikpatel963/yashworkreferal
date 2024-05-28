@@ -8,10 +8,9 @@
     }
 
     .orders-section {
-        background: linear-gradient(180deg, rgba(4, 8, 20, 1) 0%, rgba(15, 37, 104, 1) 100%);
         padding: 20px 0;
-        border-bottom: 2px solid #0800ff;
-        border-radius: 0 0 12px 12px;
+        border-bottom: none;
+        border-radius: 12px;
     }
 
     .stat-box {
@@ -47,7 +46,8 @@
 
     /* order section */
     .order-card {
-        background: linear-gradient(to right, #6a11cb, #2575fc);
+        background: linear-gradient(153deg, #6a11cb 0%, #b711cb 100%);
+        border: 1px solid #6a11cb;
         border-radius: 10px;
         padding: 15px;
         color: white;
@@ -76,8 +76,8 @@
 </style>
 
 <div class="main-content py-5">
-    <div class="container-fluid">
-        <div class="container text-center">
+    <div class="container">
+        <div class="container-fluid orders-section">
             <div class="row text-center">
                 <div class="col-6 col-sm-6 position-relative">
                     <div class="stat-box">
@@ -95,6 +95,7 @@
             </div>
         </div>
     </div>
+
     <!-- information section -->
     <div class="container box mt-5">
         <div class="infromation">

@@ -1,52 +1,83 @@
-<div class="main-content col-md-10">
-            <div class="d-flex justify-content-end mb-4">
-                <div class="profile">
-                    <div class="dropdown">
-                        <button class="btn btn-secondary dropdown-toggle" type="button" id="profileDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <img src="https://via.placeholder.com/40" alt="Profile">
-                            <span>David</span>
-                        </button>
-                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="profileDropdown">
-                            <a class="dropdown-item" href="#">Profile</a>
-                            <a class="dropdown-item" href="#">Settings</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#">Logout</a>
-                        </div>
-                    </div>
-                </div>
+<?php
+include 'inc/header.php';
+include 'inc/navbar.php';
+include 'inc/sidebar.php';
+?>
+
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+  <!-- Content Header (Page header) -->
+  <div class="content-header">
+    <div class="container-fluid">
+      <div class="row mb-2">
+        <div class="col-sm-6">
+          <h1 class="m-0">Dashboard</h1>
+        </div><!-- /.col -->
+        <div class="col-sm-6">
+          <ol class="breadcrumb float-sm-right">
+            <li class="breadcrumb-item"><a href="#">Home</a></li>
+            <li class="breadcrumb-item active">Dashboard v1</li>
+          </ol>
+        </div><!-- /.col -->
+      </div><!-- /.row -->
+    </div><!-- /.container-fluid -->
+  </div>
+  <!-- /.content-header -->
+
+  <!-- Main content -->
+  <section class="content">
+    <div class="container-fluid">
+      <!-- Small boxes (Stat box) -->
+      <div class="row">
+        <div class="col-lg-3 col-6">
+          <!-- small box -->
+          <div class="small-box bg-info">
+            <div class="inner">
+              <h3>150</h3>
+
+              <p>New Orders</p>
             </div>
-            <div class="row">
-                <div class="col-md-3 mb-3">
-                    <div class="card">
-                        <div class="card-body">
-                            <h5 class="card-title">Investment</h5>
-                            <p class="card-text">₹123,456</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3 mb-3">
-                    <div class="card">
-                        <div class="card-body">
-                            <h5 class="card-title">Balance</h5>
-                            <p class="card-text">₹78,910</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3 mb-3">
-                    <div class="card">
-                        <div class="card-body">
-                            <h5 class="card-title">Withdraw</h5>
-                            <p class="card-text">₹45,678</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3 mb-3">
-                    <div class="card">
-                        <div class="card-body">
-                            <h5 class="card-title">Total</h5>
-                            <p class="card-text">₹987,654</p>
-                        </div>
-                    </div>
-                </div>
+            <div class="icon">
+              <i class="ion ion-bag"></i>
             </div>
+            <a href="orders.php" class="small-box-footer">View Orders <i class="fas fa-arrow-circle-right"></i></a>
+          </div>
         </div>
+        <!-- ./col -->
+        <div class="col-lg-3 col-6">
+          <!-- small box -->
+          <div class="small-box bg-warning">
+            <div class="inner">
+              <h3>44</h3>
+
+              <p>New Users</p>
+            </div>
+            <div class="icon">
+              <i class="ion ion-person-add"></i>
+            </div>
+            <a href="users.php" class="small-box-footer">View Users <i class="fas fa-arrow-circle-right"></i></a>
+          </div>
+        </div>
+        <!-- ./col -->
+        <div class="col-lg-3 col-6">
+          <!-- small box -->
+          <div class="small-box bg-danger">
+            <div class="inner">
+              <h3>65</h3>
+              <p>Withdrawl Requests Pending</p>
+            </div>
+            <div class="icon">
+              <i class="fa fa-rupee-sign"></i>
+            </div>
+            <a href="withdrawls.php" class="small-box-footer">View All <i class="fas fa-arrow-circle-right"></i></a>
+          </div>
+        </div>
+        <!-- ./col -->
+      </div>
+      <!-- /.row -->
+    </div><!-- /.container-fluid -->
+  </section>
+  <!-- /.content -->
+</div>
+
+<?php include 'inc/footer.php'; ?>

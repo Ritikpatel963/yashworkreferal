@@ -95,7 +95,7 @@ include 'header.php';
 </section>
 
 <!-- Featured Section Started -->
-<div class="container mt-4" style="padding-bottom: 100px;">
+<div class="container mt-4">
     <div class="row">
         <div class="col-6 col-md-4 mb-4 featured-card">
             <div class="card">
@@ -132,6 +132,23 @@ include 'header.php';
                     <a href="#" class="btn btn-primary">₹1960</a>
                 </div>
             </div>
+        </div>
+    </div>
+</div>
+
+<div class="upperfooter" style="padding-bottom: 100px;">
+    <div class="upperfooter-content">
+        <div class="upperfooter-logo">
+            <img src="assets/image/logo.png" alt="Company Logo">
+        </div>
+        <div class="upperfooter-text">
+            <p>DS-1, 465, Sec. 10, Ukraine</p>
+            <p>2007 © Indus Power All Rights Reserved</p>
+        </div>
+        <div class="upperfooter-links">
+            <a href="#">Terms of Service</a> |
+            <a href="#">Privacy Policy</a> |
+            <a href="#">Risk Disclosure Agreement</a>
         </div>
     </div>
 </div>

@@ -16,7 +16,6 @@
             font-family: Arial, sans-serif;
             color: white;
             overflow-x: hidden;
-            /* Prevent horizontal overflow */
         }
 
         .heading h2 {
@@ -25,14 +24,12 @@
 
         }
 
-        
         .heading {
             margin-top: 20px;
             color: #ffffff;
         }
 
         .bank-details form {
-            max-width: 700px;
             margin: auto;
         }
 
@@ -79,25 +76,21 @@
         <div class="bank-details">
             <form>
                 <div class="mb-3">
-                    <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Enter your full name">
+                    <input type="text" class="form-control" placeholder="Enter your full name">
                 </div>
                 <div class="mb-3">
-                    <input type="number" class="form-control" id="exampleInputEmail1" placeholder="Enter your bank card numbers">
+                    <input type="number" class="form-control" placeholder="Enter your bank card numbers">
                 </div>
                 <div class="mb-3">
-                    <input type="number" class="form-control" id="exampleInputEmail1" placeholder="Enter your IFSC codes">
-                </div>
-                <div class="mb-3">
-                    <input type="phone" class="form-control" id="exampleInputEmail1" placeholder="Phone Number">
+                    <input type="text" maxlength="11" class="form-control" placeholder="Enter your IFSC code">
                 </div>
                 <button type="submit" class="btn btn-primary submit">Submit</button>
             </form>
-        </div>
-    </div>
-    <div class="container">
-        <div class="caution-box">
-            <i class="fas fa-exclamation-triangle icon"></i>
-            <span>Please type the information of bank account accurately. We will not be responsible for capital loss caused by information </span>
+
+            <div class="caution-box">
+                <i class="fas fa-exclamation-triangle icon"></i>
+                <span>Please type the information of bank account accurately. We will not be responsible for capital loss caused by information </span>
+            </div>
         </div>
     </div>
 
