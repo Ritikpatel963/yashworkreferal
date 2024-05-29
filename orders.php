@@ -1,4 +1,6 @@
-<?php include 'header.php'; ?>
+<?php
+include 'header.php';
+?>
 <style>
     body {
         background-color: #101119;
@@ -51,7 +53,17 @@
         border-radius: 10px;
         padding: 15px;
         color: white;
-        margin-bottom: 20px;
+        width: 49.2%;
+    }
+
+    #orders_container {
+        flex-wrap: wrap;
+    }
+
+    @media (max-width: 560px) {
+        .order-card {
+            width: 100%;
+        }
     }
 
     .order-header {
@@ -82,14 +94,14 @@
                 <div class="col-6 col-sm-6 position-relative">
                     <div class="stat-box">
                         <p class="stat-title">Lifetime Profit</p>
-                        <p class="stat-value">₹0.00</p>
+                        <p class="stat-value">₹<?= number_format(($conn->query("SELECT SUM(amt) as totalAmt FROM `transactions` WHERE user_id='{$_SESSION['user']}' AND type='income'")->fetch_assoc()['totalAmt'] ?? 0), 2) ?></p>
                     </div>
                     <div class="divider"></div>
                 </div>
                 <div class="col-6 col-sm-6">
                     <div class="stat-box">
                         <p class="stat-title">Total Balance</p>
-                        <p class="stat-value">₹0.00</p>
+                        <p class="stat-value">₹<?= number_format(($conn->query("SELECT withdraw_bal FROM users WHERE id='{$_SESSION['user']}'")->fetch_assoc()['withdraw_bal']), 2) ?></p>
                     </div>
                 </div>
             </div>
@@ -105,21 +117,31 @@
         </div>
     </div>
     <!-- Order section -->
-    <div class="container">
-        <div class="order-card">
-            <div class="order-header">
-                <div>
-                    <small>16/05/2024 19:26:22</small>
-                </div>
-                <div class="order-status">
-                    Pending
-                </div>
-            </div>
-            <div class="order-body">
-                <p>Order No. <strong>99a3812141d4296fa601af8724d8a7f</strong></p>
-                <p>Amount: <strong>₹400</strong></p>
-                <p>Txn Id: <strong>SP16052024CRdMECtC9kMghHRYH</strong></p>
-            </div>
+    <div class="container" style="padding-bottom: 80px;">
+        <div class="d-flex align-items-center gap-2" id="orders_container">
+            <?php
+            $orders = $conn->query("SELECT * FROM orders WHERE user_id = '{$_SESSION['user']}'");
+            if ($orders->num_rows > 0) {
+                foreach ($orders as $order) {
+            ?>
+                    <div class="order-card">
+                        <div class="order-header">
+                            <div>
+                                <small><?= date("d-m-Y H:i A", strtotime($order['created_at'])) ?></small>
+                            </div>
+                            <div class="order-status">
+                                <?= $order['status'] == 0 ? "Pending" : "Confirmed" ?>
+                            </div>
+                        </div>
+                        <div class="order-body">
+                            <p>Order No. <strong><?= $order['order_id'] ?></strong></p>
+                            <p>Amount: <strong>₹<?= $order['amount'] ?></strong></p>
+                        </div>
+                    </div>
+            <?php
+                }
+            }
+            ?>
         </div>
     </div>
 </div>

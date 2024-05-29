@@ -108,28 +108,28 @@
             <div class="col-3 col-sm-3 position-relative">
                 <div class="stat-box">
                     <p class="stat-title">Lifetime Profit</p>
-                    <p class="stat-value">₹0.00</p>
+                    <p class="stat-value">₹<?= number_format(($conn->query("SELECT SUM(amt) as totalAmt FROM `transactions` WHERE user_id='{$_SESSION['user']}' AND type='income'")->fetch_assoc()['totalAmt'] ?? 0), 2) ?></p>
+                    <div class="divider"></div>
+                </div>
+            </div>
+            <div class="col-3 col-sm-3 position-relative">
+                <div class="stat-box">
+                    <p class="stat-title">Total Withdrawable Balance</p>
+                    <p class="stat-value">₹<?= number_format(($conn->query("SELECT withdraw_bal FROM users WHERE id='{$_SESSION['user']}'")->fetch_assoc()['withdraw_bal']), 2) ?></p>
                     <div class="divider"></div>
                 </div>
             </div>
             <div class="col-3 col-sm-3 position-relative">
                 <div class="stat-box">
                     <p class="stat-title">Total Balance</p>
-                    <p class="stat-value">₹0.00</p>
-                    <div class="divider"></div>
-                </div>
-            </div>
-            <div class="col-3 col-sm-3 position-relative">
-                <div class="stat-box">
-                    <p class="stat-title">Total Balance</p>
-                    <p class="stat-value">₹0.00</p>
+                    <p class="stat-value">₹<?= number_format(($conn->query("SELECT wallet FROM users WHERE id='{$_SESSION['user']}'")->fetch_assoc()['wallet']), 2) ?></p>
                     <div class="divider"></div>
                 </div>
             </div>
             <div class="col-3 col-sm-3">
                 <div class="stat-box">
-                    <p class="stat-title">Total Balance</p>
-                    <p class="stat-value">₹0.00</p>
+                    <p class="stat-title">Total Refer Balance</p>
+                    <p class="stat-value">₹<?= number_format(($conn->query("SELECT refer_balance FROM users WHERE id='{$_SESSION['user']}'")->fetch_assoc()['refer_balance']), 2) ?></p>
                 </div>
             </div>
         </div>
@@ -159,11 +159,13 @@
             <i class="fas fa-chevron-right"></i>
         </div>
     </a>
-    <div class="menu-item">
-        <i class="fas fa-wallet menu-item-icon"></i>
-        <span class="menu-item-text">Withdraw</span>
-        <i class="fas fa-chevron-right"></i>
-    </div>
+    <a href="withdraw.php">
+        <div class="menu-item">
+            <i class="fas fa-wallet menu-item-icon"></i>
+            <span class="menu-item-text">Withdraw</span>
+            <i class="fas fa-chevron-right"></i>
+        </div>
+    </a>
     <a href="team.php">
         <div class="menu-item">
             <i class="fas fa-users menu-item-icon"></i>

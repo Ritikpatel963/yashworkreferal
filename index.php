@@ -46,9 +46,9 @@ include 'header.php';
             <div class="card-custom">
                 <div>
                     <h5>My Balance</h5>
-                    <h2>₹60</h2>
-                    <p class="text-small">( Min Withdrawal ₹120 )</p>
-                    <p class="text-small">· Deposit Balance</p>
+                    <h2>₹<?= number_format(($conn->query("SELECT wallet FROM users WHERE id='{$_SESSION['user']}'")->fetch_assoc()['wallet']), 2) ?></h2>
+                    <p class="text-small">Min. Withdrawl 500</p>
+                    <p class="text-small">Your Deposit Balance</p>
                 </div>
                 <div>
                     <i class="fas fa-wallet icon"></i>
@@ -90,49 +90,40 @@ include 'header.php';
 <section class="container featured-section">
     <div class="content">
         <h1><b>Featured</b></h1>
-        <p>Select a Project plan below to start your "Indus Power" journey. Click on it to enlarge the picture and view further product information.</p>
+        <p>Select a Project plan below to start your journey.</p>
     </div>
 </section>
 
 <!-- Featured Section Started -->
 <div class="container mt-4">
     <div class="row">
-        <div class="col-6 col-md-4 mb-4 featured-card">
-            <div class="card">
-                <img src="assets/image/56.jpg" class="card-img-top" alt="Power Project A">
-                <div class="card-body">
-                    <h5 class="card-title">Power Project A</h5>
-                    <p class="card-text"><strong>Daily Income:</strong> ₹105</p>
-                    <p class="card-text"><strong>Total Income:</strong> ₹9450</p>
-                    <p class="card-text"><strong>Serving Time:</strong> 90 Days</p>
-                    <a href="#" class="btn btn-primary">₹480</a>
+        <?php
+        $projects = $conn->query("SELECT * FROM projects");
+        if ($projects->num_rows > 0) {
+            foreach ($projects as $project) {
+        ?>
+                <div class="col-6 col-md-4 mb-4 featured-card">
+                    <div class="card">
+                        <img src="<?php echo $project['image']; ?>" class="card-img-top" alt="<?= $project['name'] ?>">
+                        <div class="card-body">
+                            <h5 class="card-title"><?= $project['name'] ?></h5>
+                            <p class="card-text"><strong>Daily Income:</strong> ₹<?= $project['daily_inc'] ?></p>
+                            <p class="card-text"><strong>Total Income:</strong> ₹<?= $project['total_inc'] ?></p>
+                            <p class="card-text"><strong>Serving Time:</strong> <?= $project['serving_time'] ?> Days</p>
+                            <a href="book_project.php?id=<?= $project['id'] ?>" onclick="javascript: return confirm('Are you sure you want to purchase this project?')" class="btn btn-primary">₹<?= $project['price'] ?></a>
+                        </div>
+                    </div>
                 </div>
+            <?php
+            }
+        } else {
+            ?>
+            <div class="col-12 col-md-12 mb-4">
+                <h4 class="text-white">No Projects Available Currently</h4>
             </div>
-        </div>
-        <div class="col-6 col-md-4 mb-4 featured-card">
-            <div class="card">
-                <img src="assets/image/56.jpg" class="card-img-top" alt="Power Project B">
-                <div class="card-body">
-                    <h5 class="card-title">Power Project B</h5>
-                    <p class="card-text"><strong>Daily Income:</strong> ₹420</p>
-                    <p class="card-text"><strong>Total Income:</strong> ₹37800</p>
-                    <p class="card-text"><strong>Serving Time:</strong> 90 Days</p>
-                    <a href="#" class="btn btn-primary">₹1960</a>
-                </div>
-            </div>
-        </div>
-        <div class="col-6 col-md-4 mb-4 featured-card">
-            <div class="card">
-                <img src="assets/image/56.jpg" class="card-img-top" alt="Power Project B">
-                <div class="card-body">
-                    <h5 class="card-title">Power Project B</h5>
-                    <p class="card-text"><strong>Daily Income:</strong> ₹420</p>
-                    <p class="card-text"><strong>Total Income:</strong> ₹37800</p>
-                    <p class="card-text"><strong>Serving Time:</strong> 90 Days</p>
-                    <a href="#" class="btn btn-primary">₹1960</a>
-                </div>
-            </div>
-        </div>
+        <?php
+        }
+        ?>
     </div>
 </div>
 

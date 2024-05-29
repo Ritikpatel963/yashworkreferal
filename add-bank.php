@@ -1,4 +1,37 @@
-<!DOCTYPE html>
+<?php
+include 'inc/db.php';
+
+// Check if the user is logged in
+if (!isset($_SESSION['user'])) {
+    header("location: login.php");
+    exit(); // Stop further execution
+}
+
+$user_id = $_SESSION['user'];
+
+// Check if the form is submitted
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Retrieve form data
+    $full_name = $_POST['full_name'];
+    $bank_card_numbers = $_POST['bank_card_numbers'];
+    $ifsc_code = $_POST['ifsc_code'];
+
+    // Update bank details in the database
+    $sql = "UPDATE users SET name='$full_name', bank_acc_no='$bank_card_numbers', ifsc_code='$ifsc_code' WHERE id='$user_id'";
+    $result = mysqli_query($conn, $sql);
+}
+
+// Retrieve user's bank details
+$sql = "SELECT name, bank_acc_no, ifsc_code FROM users WHERE id='$user_id'";
+$result = mysqli_query($conn, $sql);
+if ($result && mysqli_num_rows($result) > 0) {
+    $row = mysqli_fetch_assoc($result);
+    $user_full_name = $row['name'];
+    $user_bank_acc_no = $row['bank_acc_no'];
+    $user_ifsc_code = $row['ifsc_code'];
+}
+?>
+
 <html lang="en">
 
 <head>
@@ -74,15 +107,15 @@
     </div>
     <div class="container text-center mt-5">
         <div class="bank-details">
-            <form>
+            <form method="POST">
                 <div class="mb-3">
-                    <input type="text" class="form-control" placeholder="Enter your full name">
+                    <input type="text" class="form-control" name="full_name" placeholder="Enter your full name" value="<?php echo isset($user_full_name) ? $user_full_name : ''; ?>">
                 </div>
                 <div class="mb-3">
-                    <input type="number" class="form-control" placeholder="Enter your bank card numbers">
+                    <input type="number" class="form-control" name="bank_card_numbers" placeholder="Enter your bank card numbers" value="<?php echo isset($user_bank_acc_no) ? $user_bank_acc_no : ''; ?>">
                 </div>
                 <div class="mb-3">
-                    <input type="text" maxlength="11" class="form-control" placeholder="Enter your IFSC code">
+                    <input type="text" maxlength="11" class="form-control" name="ifsc_code" placeholder="Enter your IFSC code" value="<?php echo isset($user_ifsc_code) ? $user_ifsc_code : ''; ?>">
                 </div>
                 <button type="submit" class="btn btn-primary submit">Submit</button>
             </form>
@@ -93,5 +126,6 @@
             </div>
         </div>
     </div>
+
 
     <?php include 'footer.php'; ?>

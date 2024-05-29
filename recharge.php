@@ -16,24 +16,25 @@
     </div>
     <div class="container">
         <div class="balance-container">
-            <h4>Balance</h4>
-            <div class="balance-amount">₹60.00</div>
+            <h4>Current Balance</h4>
+            <div class="balance-amount">₹<?= number_format(($conn->query("SELECT wallet FROM users WHERE id='{$_SESSION['user']}'")->fetch_assoc()['wallet']), 2) ?></div>
         </div>
         <div class="info-box">
             <ul>
-                <li>Deposit Time: 7×24h</li>
                 <li>Minimum Deposit: ₹400</li>
-                <li>Arrival Time: Within 10 Minutes</li>
+                <li>Arrival Time: Within 24 Hours</li>
             </ul>
         </div>
         <div class="deposit-container">
             <div class="deposit-header">
-                <h5>Please Enter Amount</h5>
+                <h5>Please Enter Amount To Deposit</h5>
             </div>
-            <div class="deposit-input">
-                <input type="text" min="400" placeholder="Enter amount">
-            </div>
-            <button class="deposit-button">Deposit Now</button>
+            <form action="" method="post">
+                <div class="deposit-input">
+                    <input type="number" min="400" name="amount" step="0.01" placeholder="Enter amount">
+                </div>
+                <button type="submit" class="deposit-button">Deposit Now</button>
+            </form>
             <div class="disclaimer">
                 If the funds do not arrive in time, please contact the APP online customer service immediately. Only the online customer service obtained in the APP is authentic and credible, do not trust impostors outside the APP.
             </div>
