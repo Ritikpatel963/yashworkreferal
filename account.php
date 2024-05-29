@@ -176,35 +176,40 @@
     <div class="menu-item">
         <i class="fas fa-file-alt menu-item-icon"></i>
         <span class="menu-item-text">Account Record</span>
+        </a>
         <i class="fas fa-chevron-right"></i>
     </div>
-    <div class="menu-item">
-        <i class="fas fa-receipt menu-item-icon"></i>
-        <span class="menu-item-text">Recharge Record</span>
-        <i class="fas fa-chevron-right"></i>
-    </div>
+    <a href="recharge-records.php">
+        <div class="menu-item">
+            <i class="fas fa-receipt menu-item-icon"></i>
+            <span class="menu-item-text">Recharge Record</span>
+    </a>
+    <i class="fas fa-chevron-right"></i>
+</div>
+<a href="withdrawal-records.php">
     <div class="menu-item">
         <i class="fas fa-file-invoice-dollar menu-item-icon"></i>
         <span class="menu-item-text">Withdrawal Record</span>
-        <i class="fas fa-chevron-right"></i>
-    </div>
+</a>
+<i class="fas fa-chevron-right"></i>
+</div>
+<div class="menu-item">
+    <i class="fas fa-info-circle menu-item-icon"></i>
+    <span class="menu-item-text">About Us</span>
+    <i class="fas fa-chevron-right"></i>
+</div>
+<div class="menu-item">
+    <i class="fab fa-telegram-plane menu-item-icon"></i>
+    <span class="menu-item-text">Telegram Channel</span>
+    <i class="fas fa-chevron-right"></i>
+</div>
+<a href="logout.php">
     <div class="menu-item">
-        <i class="fas fa-info-circle menu-item-icon"></i>
-        <span class="menu-item-text">About Us</span>
+        <i class="fa-solid fa-right-from-bracket  menu-item-icon"></i>
+        <span class="menu-item-text">Logout</span>
         <i class="fas fa-chevron-right"></i>
     </div>
-    <div class="menu-item">
-        <i class="fab fa-telegram-plane menu-item-icon"></i>
-        <span class="menu-item-text">Telegram Channel</span>
-        <i class="fas fa-chevron-right"></i>
-    </div>
-    <a href="logout.php">
-        <div class="menu-item">
-            <i class="fa-solid fa-right-from-bracket  menu-item-icon"></i>
-            <span class="menu-item-text">Logout</span>
-            <i class="fas fa-chevron-right"></i>
-        </div>
-    </a>
+</a>
 </div>
 
 <?php include 'footer.php'; ?>
