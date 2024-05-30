@@ -46,6 +46,12 @@ $current_page = basename($_SERVER['SCRIPT_NAME']);
                     </a>
                 </li>
                 <li class="nav-item">
+                    <a href="deposits.php" class="nav-link <?php echo ($current_page == 'deposits.php') ? 'active' : ''; ?>">
+                        <i class="nav-icon fas fa-rupee-sign"></i>
+                        <p>Deposits</p>
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a href="transactions.php" class="nav-link <?php echo ($current_page == 'transactions.php') ? 'active' : ''; ?>">
                         <i class="nav-icon fas fa-list"></i>
                         <p>Transactions</p>

@@ -47,6 +47,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $_SESSION['user_no'] = $phone;
             $_SESSION['user_refer'] = $refer_code;
 
+            // Check for registration bonus
+            $result = $conn->query("SELECT `value` FROM `settings` WHERE `setting_key` = 'registration_bonus'");
+            if ($result && $row = $result->fetch_assoc()) {
+                $registration_bonus = (int) $row['value'];
+                if ($registration_bonus > 0) {
+                    // Insert registration bonus transaction
+                    $bonus_stmt = $conn->prepare("INSERT INTO transactions (user_id, type, amt, remarks, status) VALUES (?, 'bonus', ?, 'Registration Bonus', 1)");
+                    $bonus_stmt->bind_param("ii", $user_id, $registration_bonus);
+                    $bonus_stmt->execute();
+                    $bonus_stmt->close();
+                }
+            }
+
             echo "Registration successful!";
             header("location: index.php");
         }

@@ -1,4 +1,9 @@
-<!DOCTYPE html>
+<?php
+include 'inc/db.php';
+if (!isset($_SESSION['user'])) {
+    header("location: login.php");
+}
+?>
 <html lang="en">
 
 <head>
@@ -15,21 +20,23 @@
         <h4>Personal Information</h4>
     </div>
 
-    <div class="info-container">
-        <div class="info-item">
-            <div>
-                <i class="fa fa-user"></i> ID
+    <div class="container">
+        <div class="info-container w-100">
+            <div class="info-item">
+                <div>
+                    <i class="fa fa-user"></i> ID
+                </div>
+                <div>
+                    9729771689
+                </div>
             </div>
-            <div>
-                9729771689
-            </div>
-        </div>
-        <div class="info-item change-password">
-            <div>
-                <i class="fa fa-edit"></i> Change Password
-            </div>
-            <div>
-                <i class="fa fa-arrow-right"></i>
+            <div class="info-item change-password">
+                <div>
+                    <i class="fa fa-edit"></i> Change Password
+                </div>
+                <div>
+                    <i class="fa fa-arrow-right"></i>
+                </div>
             </div>
         </div>
     </div>

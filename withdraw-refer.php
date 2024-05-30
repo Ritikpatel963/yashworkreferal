@@ -13,13 +13,13 @@ if (isset($_POST['amount']) && isset($_POST['withdraw'])) {
         $bank_acc_no = $conn->query("SELECT bank_acc_no FROM users WHERE id = '{$_SESSION['user']}'")->fetch_assoc()['bank_acc_no'] ?? '';
 
         if ($bank_acc_no != "") {
-            $getBalance = $conn->query("SELECT withdraw_bal FROM users WHERE id = '{$_SESSION['user']}'")->fetch_assoc()['withdraw_bal'] ?? 0;
+            $getBalance = $conn->query("SELECT refer_balance FROM users WHERE id = '{$_SESSION['user']}'")->fetch_assoc()['refer_balance'] ?? 0;
 
             if ($getBalance >= $amt) {
-                $insert = $conn->query("INSERT INTO withdrawls (`user_id`, `type`, `amount`, `status`) VALUES ('{$_SESSION['user']}', 'main', '$amt', 'pending')");
+                $insert = $conn->query("INSERT INTO withdrawls (`user_id`, `type`, `amount`, `status`) VALUES ('{$_SESSION['user']}', 'refer', '$amt', 'pending')");
 
                 if ($insert) {
-                    $conn->query("UPDATE users SET `withdraw_bal` = (withdraw_bal-$amt) WHERE id = '{$_SESSION['user']}'");
+                    $conn->query("UPDATE users SET `refer_balance` = (refer_balance-$amt) WHERE id = '{$_SESSION['user']}'");
 
                     echo "<script>alert('Withdrawl Requested Successfully');location.href='withdrawl_record.php'</script>";
                 } else {
@@ -52,7 +52,7 @@ if (isset($_POST['amount']) && isset($_POST['withdraw'])) {
     <div class="container">
         <div class="balance-container">
             <h4>Current Balance</h4>
-            <div class="balance-amount">₹<?= number_format(($conn->query("SELECT withdraw_bal FROM users WHERE id='{$_SESSION['user']}'")->fetch_assoc()['withdraw_bal']), 2) ?></div>
+            <div class="balance-amount">₹<?= number_format(($conn->query("SELECT refer_balance FROM users WHERE id='{$_SESSION['user']}'")->fetch_assoc()['refer_balance']), 2) ?></div>
         </div>
         <div class="info-box">
             <ul>

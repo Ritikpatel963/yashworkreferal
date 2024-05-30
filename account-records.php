@@ -9,10 +9,10 @@ if (!isset($_SESSION['user'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Withdrawal Records</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="assets/style.css">
+    <title> Account Records</title>
     <style>
         .order-card {
             background: linear-gradient(to right, #6a11cb, #2575fc);
@@ -101,46 +101,28 @@ if (!isset($_SESSION['user'])) {
 
 <body>
     <div class="container-fluid orders-section text-center">
-        <h4>Withdrawal Records</h4>
+        <h4>Account Records</h4>
     </div>
 
-    <div class="container-fluid">
-        <div class="container text-center">
-            <div class="row text-center">
-                <div class="col-12 col-sm-12 position-relative">
-                    <div class="container">
-                        <div class="caution-box">
-                            <i class="fas fa-exclamation-triangle icon"></i>
-                            <span>Withdrawn money will arrive with in 24 Hrs. If not arrive please contact customer service.</span>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="container" style="padding-bottom: 100px;">
+    <div class="container" style="padding: 100px 0;">
         <?php
-        // Fetch withdrawal requests from the database
-        $sql = "SELECT * FROM withdrawls WHERE user_id = '{$_SESSION['user']}'";
-        $withdrawalRecords = $conn->query($sql);
-        if ($withdrawalRecords->num_rows > 0) {
-            foreach ($withdrawalRecords as $withdrawalRecord) {
+        $orders = $conn->query("SELECT * FROM transactions WHERE user_id = '{$_SESSION['user']}' AND type NOT IN ('recharge', 'purchase') ORDER BY id DESC");
+        if ($orders->num_rows > 0) {
+            foreach ($orders as $order) {
         ?>
                 <div class="order-card">
                     <div class="order-header">
                         <div>
-                            <small><?= date("d-m-Y H:i A", strtotime($withdrawalRecord['created_at'])) ?></small>
+                            <small><?= date("d-m-Y H:i A", strtotime($order['created_at'])) ?></small>
                         </div>
                         <div class="order-status">
-                            <?= ucfirst($withdrawalRecord['status']) ?>
+                            <?= $order['status'] == 0 ? "Pending" : "Confirmed" ?>
                         </div>
                     </div>
                     <div class="order-body">
-                        <p>Type: <strong><?= ($withdrawalRecord['type'] == 'Main' ? 'Earned Amount' : 'Refer Amount') ?></strong></p>
-                        <p>Amount: <strong>₹<?= $withdrawalRecord['amount'] ?></strong></p>
-                        <p>Transaction Id: <strong><?= $withdrawalRecord['txn_id'] ?></strong></p>
-                        <p>Remarks: <strong><?= $withdrawalRecord['remarks'] ?></strong></p>
+                        <p>Order No: <strong><?= $order['order_id'] ?></strong></p>
+                        <p>Amount: <strong>₹<?= $order['amt'] ?></strong></p>
+                        <p>Remarks: <strong><?= $order['remarks'] ?></strong></p>
                     </div>
                 </div>
         <?php

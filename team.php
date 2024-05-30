@@ -45,7 +45,7 @@ $lvl3_commission_total = $conn->query("SELECT SUM(amt) as total FROM transaction
         <div class="withdraw-section">
             <i class="fa-solid fa-shield"></i>
             <p>Please contact Customer Service for assistance if the withdrawal hasn't arrived within 24 hours after request.</p>
-            <a href="withdraw.php"><button>Withdraw Now</button></a>
+            <a href="withdraw-refer.php"><button>Withdraw Now</button></a>
         </div>
         <div class="info-boxs">
             <p>There are up to 3 levels in a team by referral joining by member:</p>

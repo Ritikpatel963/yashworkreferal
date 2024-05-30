@@ -10,11 +10,50 @@ if (isset($_GET['delete_id'])) {
     echo ("<script>alert('Transaction deleted successfully');location.href='transactions.php';</script>");
 }
 
+// Handle approve request
+if (isset($_GET['approve_id'])) {
+    $approve_id = $_GET['approve_id'];
+
+    // Fetch the transaction details
+    $transaction = $conn->query("SELECT * FROM transactions WHERE id = '$approve_id'")->fetch_assoc();
+    if ($transaction) {
+        if ($transaction['status'] != '1') {
+            $user_id = $transaction['user_id'];
+            $amount = $transaction['amt'];
+
+            // Begin a transaction to ensure data consistency
+            $conn->begin_transaction();
+
+            try {
+                // Update user's wallet
+                $conn->query("UPDATE users SET wallet = wallet + $amount WHERE id = '$user_id'");
+
+                // Update transaction status
+                $conn->query("UPDATE transactions SET status = '1' WHERE id = '$approve_id'");
+
+                // Commit transaction
+                $conn->commit();
+
+                echo ("<script>alert('Transaction approved successfully');location.href='deposits.php';</script>");
+            } catch (Exception $e) {
+                // Rollback transaction on error
+                $conn->rollback();
+
+                echo ("<script>alert('Error approving transaction');location.href='deposits.php';</script>");
+            }
+        } else {
+            echo ("<script>alert('Transaction is already approved');location.href='deposits.php';</script>");
+        }
+    } else {
+        echo ("<script>alert('Invalid transaction ID');location.href='deposits.php';</script>");
+    }
+}
+
 // Fetch all transactions with user phone numbers
 $result = $conn->query("
     SELECT t.id, t.user_id, t.type, t.amt, t.order_id, t.status, t.remarks, t.created_at, u.phone 
     FROM transactions t 
-    JOIN users u ON t.user_id = u.id ORDER BY t.id DESC
+    JOIN users u ON t.user_id = u.id WHERE t.type = 'recharge' ORDER BY t.id DESC
 ");
 ?>
 
@@ -28,7 +67,7 @@ $result = $conn->query("
         <div class="container-fluid">
             <div class="row mb2">
                 <div class="col-sm-6">
-                    <h1>Transactions</h1>
+                    <h1>Deposits</h1>
                 </div>
             </div>
         </div>
@@ -39,7 +78,7 @@ $result = $conn->query("
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title">Transactions List</h3>
+                            <h3 class="card-title">Deposits List</h3>
                         </div>
                         <div class="card-body">
                             <table id="transactionsTable" class="table table-bordered table-striped">
@@ -60,7 +99,7 @@ $result = $conn->query("
                                     <?php $i = 1;
                                     while ($row = $result->fetch_assoc()) : ?>
                                         <tr>
-                                            <td><?php echo $i++; ?></td>
+                                            <td><?php echo $i++ ?></td>
                                             <td><?php echo htmlspecialchars($row['phone']); ?></td>
                                             <td><?php echo ucfirst(htmlspecialchars($row['type'])); ?></td>
                                             <td><?php echo htmlspecialchars($row['amt']); ?></td>
@@ -69,7 +108,10 @@ $result = $conn->query("
                                             <td><?php echo htmlspecialchars($row['remarks']); ?></td>
                                             <td><?php echo htmlspecialchars($row['created_at']); ?></td>
                                             <td>
-                                                <a href="transactions.php?delete_id=<?php echo $row['id']; ?>" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this transaction?');">Delete</a>
+                                                <?php if ($row['type'] == 'recharge' && $row['status'] != '1') : ?>
+                                                    <a href="deposits.php?approve_id=<?php echo $row['id']; ?>" class="btn btn-success btn-sm" onclick="return confirm('Are you sure you want to approve this transaction?');">Approve</a>
+                                                <?php endif; ?>
+                                                <a href="deposits.php?delete_id=<?php echo $row['id']; ?>" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this transaction?');">Delete</a>
                                             </td>
                                         </tr>
                                     <?php endwhile; ?>

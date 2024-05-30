@@ -12,9 +12,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 
     if (isset($_FILES['qr_code_image']) && $_FILES['qr_code_image']['error'] == 0) {
-        $target_dir = "uploads/";
+        $target_dir = "../uploads/images/";
         $imageFileType = strtolower(pathinfo($_FILES["qr_code_image"]["name"], PATHINFO_EXTENSION));
-        $target_file = $target_dir . uniqid() . '.' . $imageFileType;
+        $target_file = $target_dir . "qr-code" . '.' . $imageFileType;
 
         // Check if image file is an actual image or fake image
         $check = getimagesize($_FILES["qr_code_image"]["tmp_name"]);
@@ -87,7 +87,7 @@ while ($row = $result->fetch_assoc()) {
                                 </div>
                                 <div class="form-group">
                                     <label for="qr_code_image">QR Code Image</label>
-                                    <input type="file" class="form-control" id="qr_code_image" name="qr_code_image">
+                                    <input type="file" class="form-control" id="qr_code_image" name="qr_code_image" accept=".png">
                                     <?php if (isset($settings['qr_code_image'])) : ?>
                                         <img src="<?php echo htmlspecialchars($settings['qr_code_image'], ENT_QUOTES); ?>" alt="QR Code" style="max-width: 100px; margin-top: 10px;">
                                     <?php endif; ?>

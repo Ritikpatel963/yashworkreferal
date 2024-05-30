@@ -1,4 +1,9 @@
-<!DOCTYPE html>
+<?php
+include 'inc/db.php';
+if (!isset($_SESSION['user'])) {
+    header("location: login.php");
+}
+?>
 <html lang="en">
 
 <head>
@@ -95,78 +100,50 @@
 </head>
 
 <body>
+    <div class="container-fluid orders-section text-center">
+        <h4>Recharge Records</h4>
+    </div>
 
     <div class="container-fluid">
         <div class="container text-center">
             <div class="row text-center">
                 <div class="col-12 col-sm-12 position-relative">
-                <div class="stat-box">
-                        <p class="stat-title"> Recharge Records</p>
-                    </div>
                     <div class="container">
                         <div class="caution-box">
                             <i class="fas fa-exclamation-triangle icon"></i>
-                            <span>Recharge money will arrive with in 10 minutes. If not arrive please contact your costumer service .</span>
+                            <span>Recharge money will arrive with in 24 Hrs. If not arrive please contact customer service.</span>
                         </div>
                     </div>
-                    
+
                 </div>
             </div>
         </div>
     </div>
-    <div class="container">
-        <div class="order-card">
-            <div class="order-header">
-                <div>
-                    <small>16/05/2024 19:26:22</small>
+    <div class="container" style="padding-bottom: 100px;">
+        <?php
+        $orders = $conn->query("SELECT * FROM transactions WHERE user_id = '{$_SESSION['user']}' AND type='recharge' ORDER BY id DESC");
+        if ($orders->num_rows > 0) {
+            foreach ($orders as $order) {
+        ?>
+                <div class="order-card">
+                    <div class="order-header">
+                        <div>
+                            <small><?= date("d-m-Y H:i A", strtotime($order['created_at'])) ?></small>
+                        </div>
+                        <div class="order-status">
+                            <?= $order['status'] == 0 ? "Pending" : "Confirmed" ?>
+                        </div>
+                    </div>
+                    <div class="order-body">
+                        <p><strong>Order No: <?= $order['order_id'] ?></strong></p>
+                        <p><strong>Amount: ₹<?= $order['amt'] ?></strong></p>
+                        <p><strong><?= $order['remarks'] ?></strong></p>
+                    </div>
                 </div>
-                <div class="order-status">
-                    Pending
-                </div>
-            </div>
-            <div class="order-body">
-                <p>Order No. <strong>99a3812141d4296fa601af8724d8a7f</strong></p>
-                <p>Amount: <strong>₹400</strong></p>
-                <p>Txn Id: <strong>SP16052024CRdMECtC9kMghHRYH</strong></p>
-            </div>
-        </div>
-    </div>
-    <div class="container">
-        <div class="order-card">
-            <div class="order-header">
-                <div>
-                    <small>16/05/2024 19:26:22</small>
-                </div>
-                <div class="order-status">
-                    Pending
-                </div>
-            </div>
-            <div class="order-body">
-                <p>Order No. <strong>99a3812141d4296fa601af8724d8a7f</strong></p>
-                <p>Amount: <strong>₹400</strong></p>
-                <p>Txn Id: <strong>SP16052024CRdMECtC9kMghHRYH</strong></p>
-            </div>
-        </div>
-    </div>
-    <div class="container">
-        <div class="order-card">
-            <div class="order-header">
-                <div>
-                    <small>16/05/2024 19:26:22</small>
-                </div>
-                <div class="order-status">
-                    Pending
-                </div>
-            </div>
-            <div class="order-body">
-                <p>Order No. <strong>99a3812141d4296fa601af8724d8a7f</strong></p>
-                <p>Amount: <strong>₹400</strong></p>
-                <p>Txn Id: <strong>SP16052024CRdMECtC9kMghHRYH</strong></p>
-            </div>
-        </div>
+        <?php
+            }
+        }
+        ?>
     </div>
 
-
-
-</body>
-<?php include 'footer.php'; ?>
+    <?php include 'footer.php'; ?>

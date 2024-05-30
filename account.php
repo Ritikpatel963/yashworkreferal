@@ -105,30 +105,30 @@
 <div class="container">
     <div class="container-fluid orders-section">
         <div class="row text-center">
-            <div class="col-3 col-sm-3 position-relative">
+            <div class="col-6 col-sm-3 position-relative">
                 <div class="stat-box">
                     <p class="stat-title">Lifetime Profit</p>
                     <p class="stat-value">₹<?= number_format(($conn->query("SELECT SUM(amt) as totalAmt FROM `transactions` WHERE user_id='{$_SESSION['user']}' AND type='income'")->fetch_assoc()['totalAmt'] ?? 0), 2) ?></p>
                     <div class="divider"></div>
                 </div>
             </div>
-            <div class="col-3 col-sm-3 position-relative">
+            <div class="col-6 col-sm-3 position-relative">
                 <div class="stat-box">
-                    <p class="stat-title">Total Withdrawable Balance</p>
+                    <p class="stat-title">Withdraw Balance</p>
                     <p class="stat-value">₹<?= number_format(($conn->query("SELECT withdraw_bal FROM users WHERE id='{$_SESSION['user']}'")->fetch_assoc()['withdraw_bal']), 2) ?></p>
                     <div class="divider"></div>
                 </div>
             </div>
-            <div class="col-3 col-sm-3 position-relative">
+            <div class="col-6 col-sm-3 position-relative">
                 <div class="stat-box">
                     <p class="stat-title">Total Balance</p>
                     <p class="stat-value">₹<?= number_format(($conn->query("SELECT wallet FROM users WHERE id='{$_SESSION['user']}'")->fetch_assoc()['wallet']), 2) ?></p>
                     <div class="divider"></div>
                 </div>
             </div>
-            <div class="col-3 col-sm-3">
+            <div class="col-6 col-sm-3">
                 <div class="stat-box">
-                    <p class="stat-title">Total Refer Balance</p>
+                    <p class="stat-title">Refer Balance</p>
                     <p class="stat-value">₹<?= number_format(($conn->query("SELECT refer_balance FROM users WHERE id='{$_SESSION['user']}'")->fetch_assoc()['refer_balance']), 2) ?></p>
                 </div>
             </div>
@@ -137,7 +137,7 @@
 </div>
 
 <!-- Main Section -->
-<div class="container menu-section">
+<div class="container menu-section" style="padding-bottom: 80px;">
     <a href="add-bank.php">
         <div class="menu-item">
             <i class="fas fa-university menu-item-icon"></i>
@@ -173,43 +173,44 @@
             <i class="fas fa-chevron-right"></i>
         </div>
     </a>
-    <div class="menu-item">
-        <i class="fas fa-file-alt menu-item-icon"></i>
-        <span class="menu-item-text">Account Record</span>
-        </a>
-        <i class="fas fa-chevron-right"></i>
-    </div>
+    <a href="account-records.php">
+        <div class="menu-item">
+            <i class="fas fa-file-alt menu-item-icon"></i>
+            <span class="menu-item-text">Account Record</span>
+            <i class="fas fa-chevron-right"></i>
+        </div>
+    </a>
     <a href="recharge-records.php">
         <div class="menu-item">
             <i class="fas fa-receipt menu-item-icon"></i>
             <span class="menu-item-text">Recharge Record</span>
+            <i class="fas fa-chevron-right"></i>
+        </div>
     </a>
-    <i class="fas fa-chevron-right"></i>
-</div>
-<a href="withdrawal-records.php">
+    <a href="withdrawal-records.php">
+        <div class="menu-item">
+            <i class="fas fa-file-invoice-dollar menu-item-icon"></i>
+            <span class="menu-item-text">Withdrawal Record</span>
+            <i class="fas fa-chevron-right"></i>
+        </div>
+    </a>
     <div class="menu-item">
-        <i class="fas fa-file-invoice-dollar menu-item-icon"></i>
-        <span class="menu-item-text">Withdrawal Record</span>
-</a>
-<i class="fas fa-chevron-right"></i>
-</div>
-<div class="menu-item">
-    <i class="fas fa-info-circle menu-item-icon"></i>
-    <span class="menu-item-text">About Us</span>
-    <i class="fas fa-chevron-right"></i>
-</div>
-<div class="menu-item">
-    <i class="fab fa-telegram-plane menu-item-icon"></i>
-    <span class="menu-item-text">Telegram Channel</span>
-    <i class="fas fa-chevron-right"></i>
-</div>
-<a href="logout.php">
-    <div class="menu-item">
-        <i class="fa-solid fa-right-from-bracket  menu-item-icon"></i>
-        <span class="menu-item-text">Logout</span>
+        <i class="fas fa-info-circle menu-item-icon"></i>
+        <span class="menu-item-text">About Us</span>
         <i class="fas fa-chevron-right"></i>
     </div>
-</a>
+    <div class="menu-item">
+        <i class="fab fa-telegram-plane menu-item-icon"></i>
+        <span class="menu-item-text">Telegram Channel</span>
+        <i class="fas fa-chevron-right"></i>
+    </div>
+    <a href="logout.php">
+        <div class="menu-item">
+            <i class="fa-solid fa-right-from-bracket  menu-item-icon"></i>
+            <span class="menu-item-text">Logout</span>
+            <i class="fas fa-chevron-right"></i>
+        </div>
+    </a>
 </div>
 
 <?php include 'footer.php'; ?>
